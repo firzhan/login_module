@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+    <title></title>
+      
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> 
+     <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	 
+	 
+	 <script type="text/javascript">
+		var table = $('#userListTable').DataTable();
+    	$(document).ready(function() {
+    	
+        	$("#button1").click(function(){
+
+        		table =	$('#userListTable').DataTable( {
+        				"ajax": "http://localhost:8081/api/users",
+        				"retrieve": true,
+        				"columns": [
+           		 			{ "data": "id" },
+            				{ "data": "username" },
+            				{ "data": "password" },
+            				{ "data": "passwordUpdatedDate" },
+            				{ "data": "active" },
+            				{ "data": "email" }
+        				]
+    				} );
+      		});
+
+
+            $("#button2").click(function(){
+
+                table = $('#singleUserTable').DataTable( {
+                        "ajax": "http://localhost:8081/api/users/"+$('#userId').val(),
+                        "retrieve": true,
+                        "columns": [
+                            { "data": "id" },
+                            { "data": "username" },
+                            { "data": "password" },
+                            { "data": "passwordUpdatedDate" },
+                            { "data": "active" },
+                            { "data": "email" }
+                        ]
+                    } );
+            });
+
+
+
+
+  	
+} );
+</script>
+</head>
+<body>
+
+   
+
+
+
+
+    
+    <div>
+        <input id="button1" type="button" value="button" />
+        <table id="userListTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Password Updated Date</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                   <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Password Updated Date</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+     <div>
+
+        User ID: <input type="text" name="userId" id="userId"><br>
+        <input id="button2" type="button" value="button" />
+        <table id="singleUserTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Password Updated Date</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                   <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Password Updated Date</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+</body>
+</html>

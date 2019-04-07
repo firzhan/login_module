@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+      
+     <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"> 
+     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+	
+	 <script type="text/javascript">
+
+    	$(document).ready(function () {
+    
+    
+        		$("#button1").click(function(){
+    		
+    				$.get("http://localhost:8081/api/users", function(data, status){
+    		    		console.log(data);
+    		    		
+    		    		
+    				});
+  				});
+  
+  				
+  				$('#example').DataTable({
+  				 "processing": true,
+        			"ajax": {
+            			"url": 'http://localhost:8081/api/users',
+            			"type": "GET"
+
+        			}
+    });
+       
+    });
+</script>
+</head>
+<body>
+
+   
+
+
+
+
+    
+    <div>
+
+        <input id="button1" type="button" value="button" />
+     <table id="example">
+    	<thead>
+      		<tr><th>Id</th><th>Username</th><th>email</th><th>active</th></tr>
+    	</thead>
+    	<tbody>
+      		
+    	</tbody>
+  	</table>
+    </div>
+</body>
+</html>
